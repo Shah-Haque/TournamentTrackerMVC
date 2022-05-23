@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TrackerLibrary.Models.TournamentModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="jumbotron">
+            <h1>Tournament Tracker</h1>
+            <p class="lead">Welcome to Tournament tracker, you can load your tournament through the links on the right or create a new tournament</p>
+            <p>@Html.ActionLink("Create a Tournament", "Create","Tournaments",
+              new { area = ""}, new { @class = "btn btn-primary btn-lg" })</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Getting started with Tournament Tracker</h2>
+                <p>
+                    Tournament Tracker is an excellent application that allows you to track your
+                    Tournaments big or small, it can even create new tournaments for your organization
+                    making it very versatile as it has support for many data sources from SQL to text file
+                    and windows form to web forms this neat little application is truly your best friend.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h2>Created by Shah Haque</h2>
+                <p> Who is Shah, you ask?</p>
+                <p>
+                    Shah is an excellent rising software developer who specializes in .NET development for applications big or small
+                    he has tremendous experience with utlising the Microsoft Stack of technologies 
+                    he likes gaming and tech a very cool nerd to say the least, he has good taste on movies and TV shows 
+                    and has controversial hot takes in the gaming landscape and overall a very cool person
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Current Tournaments</h2>
+        <ul class="list-unstyled tourney-display">
+            @foreach (var item in Model)
+             {
+               <li>@Html.ActionLink(item.TournamentName, "Details", "Tournaments", new { id = item.TournamentID}, new { }) </li>
+             }
+        </ul>
+    </div>
+</div>
